@@ -1,0 +1,30 @@
+<h1>Boards#index</h1>
+<p>Find me in app/views/boards/index.html.erb</p>
+
+
+
+
+
+<%= form_tag "/boards/create", {"method" => "post"} do %>
+
+
+    <%= label_tag "board_title", "ラベル" %>
+    <%= text_field_tag "board_title" %>
+
+    <%= label_tag "board_description", "ラベル" %>
+    <%= text_field_tag "board_description" %>
+
+    <%= submit_tag "新規ボード" %>
+<% end %>
+
+
+<!-- 配列をループさせる -->
+<% @boards.each do |board| %>
+<div>
+    <a href="/boards/edit/<%= board.id %>">
+    <p><%= board.id %></p>
+    <p><%= board.board_title %></p>
+    </a>
+</div>
+
+<% end %>

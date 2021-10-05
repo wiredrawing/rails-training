@@ -1,0 +1,24 @@
+<h1>Boards#edit</h1>
+<p>Find me in app/views/boards/edit.html.erb</p>
+
+
+
+
+
+
+
+
+
+
+
+<%= form_tag "/boards/update/" + @board.id.to_s, {"method" => "post"} do %>
+
+    <%= label_tag ("board_title"), ("ラベル") %>
+    <%= text_field_tag ("board_title"), @board.board_title %>
+
+    <%= label_tag "board_description", "掲示板概要" %>
+    <%= text_field_tag ("board_description"), (@board.board_description) %>
+
+    <%= hidden_field_tag "id", @board.id%>
+    <%= submit_tag "上記掲示板を更新する" %>
+<% end %>
