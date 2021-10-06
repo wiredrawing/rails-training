@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="actions">
+    <%= form.text_field("reason") %>
+    <%= form.text_field("request") %>
+    <%= form.text_field("source_user_id") %>
+    <%= form.text_field("destination_user_id") %>
     <%= form.submit %>
   </div>
 <% end %>

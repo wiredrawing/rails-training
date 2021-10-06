@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :likes
   # ユーザー情報登録
   namespace("users") do
     get 'sessions/new'

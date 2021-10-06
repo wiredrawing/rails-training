@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
 
   def new
+    @user
   end
 
   def index
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
     p("params ---->");
     p(params);
 
+    @user = nil;
     # 新規登録の検証
     new_user = User.new({
       "username" => params["username"],
@@ -40,7 +42,7 @@ class UsersController < ApplicationController
         p("error.attribute--->", error.attribute);
         p("error--->", error.message());
       end
-
+      @user = new_user
     end
 
   end

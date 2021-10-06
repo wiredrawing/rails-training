@@ -4,6 +4,17 @@
 
 
 
+<%= form_with({:model => user, :local => true}) do |form | %>
+
+    <% if user.errors.any?() %>
+
+        <% user.errors().full_messages().each do |message| %>
+        <p><%= message %></p>
+        <% end %>
+
+    <% end %>
+<% end %>
+
 <%= form_tag("/users/create", {:method => "post"}) do  %>
 
     <p><%= text_field_tag("username")%></p>
