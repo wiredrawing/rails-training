@@ -6,7 +6,9 @@ class TopsController < ApplicationController
   end
 
   def index
-    print "同一メソッドを複数用意する"
+    p(params);
+    print("あああああああああああああああ", "print関数を実行")
+    puts("puts関数を実行する");
   end
 
 

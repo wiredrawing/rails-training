@@ -20,11 +20,18 @@
 
 <!-- 配列をループさせる -->
 <% @boards.each do |board| %>
+    <hr>
 <div>
     <a href="/boards/edit/<%= board.id %>">
     <p><%= board.id %></p>
-    <p><%= board.board_title %></p>
+    <p>title => <%= board.board_title %></p>
+    <p>descrition => <%= board.board_description %></p>
+    </a>
+    <hr>
+
+    <a href="/comment/comment/<%= board.id %>">
+    <p>この掲示板にコメントする</p>
     </a>
 </div>
-
+    <hr>
 <% end %>

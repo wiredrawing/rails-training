@@ -20,8 +20,8 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  # host: localhost
-  host: host.docker.internal
+  host: localhost
+  # host: host.docker.internal
   username: admin
   password: admin
   port: 15432

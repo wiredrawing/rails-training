@@ -1,4 +1,4 @@
-class BoardsController < ApplicationController
+class Admin::Board::BoardsController < ApplicationController
 
 
   def index
@@ -6,6 +6,13 @@ class BoardsController < ApplicationController
     @boards = Board.all().order("id")
     p @boards
     print "掲示板一覧を取得"
+    # ビューファイルのレンダリング
+    p("string".intern())
+    p(:string);
+    p(:string.to_s());
+    render({
+      "template".intern() => "boards/index"
+    });
   end
 
   def show

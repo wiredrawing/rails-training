@@ -1,0 +1,24 @@
+<h1>Comments#index</h1>
+<p>Find me in app/views/comments/index.html.erb</p>
+
+
+
+
+
+<%= form_tag "/comment/create/" + @board.id.to_s, {:method => "post"} do %>
+
+
+    <%= label_tag "message", "投稿内容" %>
+    <%= text_field_tag "message" %>
+    <%= hidden_field_tag "id", @board.id %>
+    <%= submit_tag "submit" %>
+<% end %>
+
+
+<hr>
+<p>It was alreay posted messages.</p>
+
+<% @board . comments . each do |comment| %>
+    <p><%= comment.message %></p>
+    <p><%= comment.written_by %></p>
+<% end %>
