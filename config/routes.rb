@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
 
 
+  # ユーザー情報登録
+  namespace("users") do
+    get 'sessions/new'
+    get 'new'
+    get 'index'
+    post 'create'
+    post 'update'
+    get 'edit'
+  end
+  # admin/board
+  # admin/commnet
+  # 二階層にURLをネストした場合
   # 名前空間 admin
   # コメント用機能
   namespace("admin") do
@@ -15,9 +27,6 @@ Rails.application.routes.draw do
         to: "boards#update"
       }
     end
-
-
-
     namespace("comment") do
       get  'comment/:id', {:to => "comments#index"}
       post 'comment/create/:id', {:to => "comments#create"}
@@ -27,16 +36,24 @@ Rails.application.routes.draw do
     end
   end
 
+
   # 名前空間 comment
+  # 一回層にURLをネストした場合
   # コメント投稿機能
   namespace("comment") do
     get  ':id', {:to => "comments#index"}
     post 'create/:id', {:to => "comments#create"}
     get  'edit/:id', {:to => "comments#edit"}
-    get  'update/:id', {:to => "comments#update"}
+    post  'update/:id', {:to => "comments#update"}
     get  'show/:id', {:to => "comments#show"}
+    # ()付きで明示的にメソッドとして呼び出す
+    post('delete/:id', {"to".intern() => "comments#delete"});
   end
 
+  # ログイン関連
+  get("/login", {:to => "sessions#new"})
+  post("/login", {:to => "sessions#create"})
+  delete("/logout", {:to => "sessions#delete"})
 
   # 掲示板一覧
   get 'boards/index'

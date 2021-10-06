@@ -37,4 +37,18 @@ class Comment::CommentsController < ApplicationController
   end
   def show
   end
+
+  def delete
+    print("POSTされたPOSTデータ一覧");
+    p(params);
+    # 削除対象のID
+    delete_comment = Comment.find(params[:comment_id])
+    p(
+      "削除対象のコメントを取得する"
+    )
+    p(delete_comment)
+    p("deleteメソッドの実行 => ")
+    p(delete_comment.delete());
+  end
+
 end

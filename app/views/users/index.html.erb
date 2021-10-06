@@ -1,0 +1,16 @@
+<h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
+
+
+
+
+<%= form_tag("/users/create", {:method => "post"}) do  %>
+
+    <p><%= text_field_tag("username")%></p>
+    <p><%= text_field_tag("email")%></p>
+    <p><%= text_field_tag("description")%></p>
+    <p><%= text_field_tag("password")%></p>
+    <p><%= text_field_tag("password_confirmation")%><br>
+    確認用パスワード</p>
+    <p><%= submit_tag("submit", {:value => "新規登録"}) %></p>
+<% end %>

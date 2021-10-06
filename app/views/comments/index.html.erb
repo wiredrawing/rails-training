@@ -21,4 +21,13 @@
 <% @board . comments . each do |comment| %>
     <p><%= comment.message %></p>
     <p><%= comment.written_by %></p>
+
+
+    <p>コメント削除</p>
+
+    <%= form_tag("/comment/delete/" + @board.id.to_s(), {"method" => "post"}) do %>
+        <%= comment.id %>
+        <%= hidden_field_tag("comment_id", comment.id) %>
+        <%= submit_tag("submit", {"value" => "このコメントを削除"}) %>
+    <% end %>
 <% end %>
