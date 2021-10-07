@@ -1,4 +1,4 @@
-class LikesController < ApplicationController
+class Api::V1::LikesController < ApplicationController
   before_action :set_like, only: %i[ show edit update destroy ]
 
   # GET /likes or /likes.json

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_145429) do
+ActiveRecord::Schema.define(version: 2021_10_07_140657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,23 +31,37 @@ ActiveRecord::Schema.define(version: 2021_10_06_145429) do
     t.bigint "board_id"
   end
 
+  create_table "images", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "filename"
+    t.string "extension"
+    t.integer "is_displayed", limit: 2
+    t.text "comment"
+    t.integer "image_type", limit: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "source_user_id"
     t.bigint "destination_user_id"
-    t.text "reason"
-    t.text "request"
+    t.string "reason", limit: 256
+    t.string "request", limit: 1024
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", limit: 512
-    t.string "email", limit: 512
-    t.text "description"
-    t.bigint "section"
+    t.string "given_name"
+    t.string "family_name"
+    t.string "address"
+    t.date "birthday"
+    t.text "comment"
+    t.string "email"
+    t.string "password_digest"
+    t.integer "gender", limit: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "password_digest"
   end
 
 end

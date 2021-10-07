@@ -1,16 +1,25 @@
 Rails.application.routes.draw do
 
 
-  resources :likes
-  # ユーザー情報登録
-  namespace("users") do
-    get 'sessions/new'
-    get 'new'
-    get 'index'
-    post 'create'
-    post 'update'
-    get 'edit'
+  # API用ルーティング
+  namespace("api") do
+
+    namespace("v1") do
+
+      # 画像の取り扱い用API
+      resources :images
+
+      # いいねの送受信取り扱い用API
+      resources :likes
+    end
+
   end
+
+  resources :users
+  # ユーザー情報登録
+
+
+
   # admin/board
   # admin/commnet
   # 二階層にURLをネストした場合
@@ -68,15 +77,4 @@ Rails.application.routes.draw do
   # resources :tops
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  get "/shop", {to: "tops#shop"};
-  get "/aa", to: "tops#aa"
-  get "/list", to: "tops#list";
-  post "/list", to: "tops#list";
-  get "/user", to: "tops#user";
-  get "/index", to: "tops#index";
-  get "/", to: "tops#index";
-
-  get "/play", {:to  => "tops#play"}
-
-  get "/comment/create", {:to => "comments#create"}
 end
